@@ -1,6 +1,6 @@
 ## 1. C++ exercise
 
-###### 1. Write a program in C++ which swap the values of two variables <u>not using third variable</u>.
+###### 1. Write a program in C++ which swaps the values of two variables <u>not using third variable</u>.
 
 ```c++
 #include <iostream>
@@ -44,9 +44,9 @@ return 0;
 
 Fibonacci Series: $F_0 = 0, F_1 = 1, F_n = F_{n-1} + F_{n-2} $. 
 
-(1) Print Fibonacci Series $F_n$ using recursion.
+(1) Print Fibonacci Series $F_n$ using recursion in C++.
 
-(2) Print Fibonacci Series $F_n$ using **dynamic programming**. ( When you need to print Fibonacci Series **up to** $n$ number of terms?, dynamic programming can save you lots of time.)
+(2) Print Fibonacci Series $F_n$ using **dynamic programming** in C++. ( When you need to print Fibonacci Series **up to** $n$ number of terms?, dynamic programming can save you lots of time.)
 
 (3) Use ```microbenchmark()``` in R to compare their speed.
 
@@ -74,9 +74,13 @@ int fib_dp(int n)
 
 
 
-###### 4. Write a function `rand7` which generates a uniform random integer in the range 1 to 7. Then write a function `rand10` using ```rand7``` which generates a uniform random integer in the range 1 to 10.
+###### 4. Generates a uniform random integer
 
-Check your result by simulation in R using histogram.
+(1) Write a function `rand7` in C++ which generates a uniform random integer in the range 1 to 7. 
+
+(2) Then write a function `rand10` in C++ using ```rand7``` which generates a uniform random integer in the range 1 to 10.
+
+Check your result in R using histogram.
 
 ```c++
 int rand7()
