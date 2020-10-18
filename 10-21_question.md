@@ -1,6 +1,6 @@
 ## 1. C++ exercise
 
-###### 1.Write a program in C++ which swap the values of two variables not using third variable.
+###### 1. Write a program in C++ which swap the values of two variables <u>not using third variable</u>.
 
 ```c++
 #include <iostream>
@@ -19,7 +19,7 @@ int main()
 
 
 
-###### 2.There are four different points on a plane: A(x1, y1), B(x2, y2), C(x3, y3) and D(x4, y4). Write a C++ program to check whether two straight lines AB and CD are orthogonal or not.
+###### 2. There are four different points on a plane: A(x1, y1), B(x2, y2), C(x3, y3) and D(x4, y4). Write a C++ program to check whether two straight lines AB and CD are orthogonal or not.
 
 ```c++
 #include <iostream>
@@ -42,34 +42,66 @@ return 0;
 
 ###### 3.  Recursion: Print Fibonacci Series $F_n$
 
-$F_0 = 0, F_1 = 1, F_n = F_{n-1} + F_{n-2} $
+Fibonacci Series: $F_0 = 0, F_1 = 1, F_n = F_{n-1} + F_{n-2} $. 
+
+(1) Print Fibonacci Series $F_n$ using recursion.
+
+(2) Print Fibonacci Series $F_n$ using **dynamic programming**. ( When you need to print Fibonacci Series **up to** $n$ number of terms?, dynamic programming can save you lots of time.)
+
+(3) Use ```microbenchmark()``` in R to compare their speed.
 
 ```c++
 #include<iostream>
+#include <RcppArmadillo.h>
+// [[Rcpp::depends(RcppArmadillo)]]
+using namespace arma;
 using namespace std;
-int fib(int);
-int main()
-{
-    int n;
-    cin>>n;
-    cout<<fib(n)<<endl;
-}
+
+// [[Rcpp::export]]
 int fib(int x)
 {
-	// your code here
+    // ....
+}
+
+// [[Rcpp::export]]
+int fib_dp(int n) 
+{ 
+    //...
 }
 ```
 
-What if you need to print Fibonacci Series up to $n$ number of terms?  **Dynamic Programming** can save you some time.
 
 
 
-###### 4. Given a function `rand7` which generates a uniform random integer in the range 1 to 7, write a function `rand10` which generates a uniform random integer in the range 1 to 10.
+
+###### 4. Write a function `rand7` which generates a uniform random integer in the range 1 to 7. Then write a function `rand10` using ```rand7``` which generates a uniform random integer in the range 1 to 10.
+
+Check your result by simulation in R using histogram.
 
 ```c++
+int rand7()
+{
+  // your code here
+}
+
 int rand10() {
     // your code here
+    // you should only use rand7()
 }
+```
+
+```R
+library(Rcpp)
+sourceCpp("yourcpp.cpp")
+
+N = 10000
+result = rep(0,10000)
+for (i in 1:N) {
+  result[i] = rand10()
+}
+
+library(ggplot2)
+ggplot() + geom_bar(aes(result))
 ```
 
 
@@ -102,6 +134,7 @@ int rand10() {
     * ```X( vector_of_row_indices, vector_of_column_indices )```
 * member functions
   * ```svd```: Singular value decomposition
+  * ```chol```: Cholesky decomposition
   * ```eig_sym```:  Eigen decomposition of dense symmetric/hermitian matrix X
   * ```solve```: Solve a dense system of linear equations
   * ```as_scalar```: convert 1x1 matrix to pure scalar
@@ -113,11 +146,3 @@ int rand10() {
 * ....
 
 
-
-###### 1. Linear regression
-
-Consider linear regression model 
-
-$$y = X\beta + \epsilon,\ \ \epsilon\sim\mathcal{N}(0,\sigma^2 I)$$
-
-Find the LS estimator $$\hat{\beta} = (X^TX)^{-1}X^Ty$$ using armadillo.
